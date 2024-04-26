@@ -332,10 +332,9 @@ class Peer:
         Send a sale response to the network
         """
 
-        if (
-            announcement.originator_public_key == self.keys["public"]
-            or announcement.deadline_reached
-        ):
+        if announcement.originator_public_key == self.keys["public"]:
+            return
+        if announcement.deadline_reached:
             return
         if self.wallet.balance <= announcement.get_artwork_price():
             return

@@ -86,7 +86,6 @@ class TestPeer(unittest.IsolatedAsyncioTestCase):
         self.peer.inventory.add_owned_artwork(self.artwork1)
         self.peer.node = self.mock_node
         self.peer.wallet = Wallet()
-        self.peer.wallet.add_to_balance(20)
 
         self.peer2 = Peer(
             8000, "src/test/py/resources/peer_test", "127.0.0.1:5000", self.mock_kdm
@@ -262,10 +261,12 @@ class TestPeer(unittest.IsolatedAsyncioTestCase):
         Test case for the send_sale_response method of the Peer class.
         """
 
+        self.peer.wallet.add_to_balance(20)
+
         announcement = OfferAnnouncement(
-            originator_public_key="originator_public_key",
             artwork_id="artwork_id",
             artwork_price=10,
+            originator_public_key="originator_public_key",
         )
 
         await self.peer.send_sale_response(self.sale_key, announcement)
@@ -321,6 +322,16 @@ class TestPeer(unittest.IsolatedAsyncioTestCase):
         self.peer.inventory.pending_trades = {}
         await self.peer.handle_sale_response(self.sale_key, self.response_sale)
         self.peer.logger.info.assert_any_call("Sale unsuccessful")
+
+    def test_balance(self):
+        """
+        Test case for the add_to_balance method of the Wallet class.
+        """
+
+        self.peer.wallet.add_to_balance(10)
+        self.assertEqual(10, self.peer.wallet.balance)
+        self.peer.wallet.remove_from_balance(10)
+        self.assertEqual(0, self.peer.wallet.balance)
 
 
 if __name__ == "__main__":
