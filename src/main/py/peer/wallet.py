@@ -32,7 +32,14 @@ class Wallet:
         Removes balance from the wallet.
 
         Params:
-        - amount (int): The amount to add to the wallet.
+        - amount (int): The amount to remove from the wallet.
         """
 
         self.balance -= amount
+
+    def current_balance(self):
+        """
+        Gets the current balance of the wallet.
+        """
+
+        return self.balance

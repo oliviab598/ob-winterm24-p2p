@@ -25,7 +25,7 @@ class OfferResponseTrade:
         self.artwork_id = artwork_id
         self.originator_public_key = originator_public_key
 
-    def get_trade_id(self):
+    def get_trades_id(self):
         """
         Returns the trade id to respond to.
         """
