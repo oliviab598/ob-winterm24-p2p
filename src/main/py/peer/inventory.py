@@ -18,6 +18,7 @@ class Inventory:
         self.pending_trades = {}
         self.artworks_pending_trade = set()
         self.completed_trades = set()
+        self.completed_sales = set()
         self.commission_canvases = {}
 
     def add_commission(self, artwork: Artwork):

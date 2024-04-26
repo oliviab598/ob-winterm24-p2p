@@ -14,6 +14,7 @@ class OfferAnnouncement:
     def __init__(
         self,
         artwork_id: str,
+        artwork_price: int = 0,
         originator_public_key: str = "",
     ):
         """
@@ -22,6 +23,7 @@ class OfferAnnouncement:
         """
         self.artwork_id = artwork_id
         self.originator_public_key = originator_public_key
+        self.artwork_price = artwork_price
         self.deadline_reached = False
 
     def get_artwork_id(self):
@@ -35,3 +37,10 @@ class OfferAnnouncement:
         Returns the public key of the originator of the trade announcement.
         """
         return self.originator_public_key
+
+    def get_artwork_price(self):
+        """
+        Returns the price of the artwork to be traded.
+        """
+
+        return self.artwork_price

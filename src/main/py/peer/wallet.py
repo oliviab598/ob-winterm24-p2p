@@ -16,9 +16,8 @@ class Wallet:
         """
 
         self.balance = 0
-        self.pending_balance = 0
 
-    def add_balance(self, amount: int):
+    def add_to_balance(self, amount: int):
         """
         Adds balance to the wallet.
 
@@ -28,7 +27,7 @@ class Wallet:
 
         self.balance += amount
 
-    def remove_balance(self, amount: int):
+    def remove_from_balance(self, amount: int):
         """
         Removes balance from the wallet.
 
@@ -37,31 +36,3 @@ class Wallet:
         """
 
         self.balance -= amount
-
-    def add_pending_balance(self, amount: int):
-        """
-        Adds pending balance to the wallet.
-
-        Params:
-        - amount (int): The amount to add to the pending balance.
-        """
-
-        self.pending_balance += amount
-
-    def remove_pending_balance(self, amount: int):
-        """
-        Removes pending balance from the wallet.
-
-        Params:
-        - amount (int): The amount to remove from the pending balance.
-        """
-
-        self.pending_balance -= amount
-
-    def transfer_pending_balance(self):
-        """
-        Transfers pending balance to the wallet.
-        """
-
-        self.balance += self.pending_balance
-        self.pending_balance = 0

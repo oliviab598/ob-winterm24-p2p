@@ -2,11 +2,11 @@
 """
 Module to manage trade response functionality.
 
-OfferResponse class allows us to respond to a trade Announcement
+OfferResponseTrade class allows us to respond to a trade Announcement
 """
 
 
-class OfferResponse:
+class OfferResponseTrade:
     """
     Class to manage trade responses
     """
